@@ -16,7 +16,7 @@
 from flask import Flask, jsonify, make_response, Response
 import requests
 
-GLITCH_URL="https://reminiscent-steady-albertosaurus.glitch.me/"
+GLITCH_URL="https://reminiscent-steady-albertosaurus.glitch.me"
 GLITCH_URL_ADJ=GLITCH_URL + "/adjective"
 GLITCH_URL_VERB=GLITCH_URL + "/verb"
 GLITCH_URL_NOUN=GLITCH_URL + "/noun"

@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 #
 # File                  : main.py
-# Date                  : 05/17/2020
+# Date                  : 05/17/2021
 # Description           : main (driver) application for madlib
-#                         this application
-#
+#                         application
 #
 # Requires              : python 3.x
 #                         flask

@@ -10,4 +10,4 @@ COPY api.py .
 COPY main.py .
 EXPOSE 9000
 
-CMD python main.py
+CMD python main.py -i 0.0.0.0

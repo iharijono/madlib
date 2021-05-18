@@ -1,13 +1,13 @@
 # What is this
-This is a README for a simplified demo of madlib app
+This is a README for a simplified demo of madlib app (https://gist.github.com/porkloin/289a641b9f3b6a22c48a5913cd1aede6)
 
 ## Contents
 - Remarks on the assignment
 - Requirements for deployment & test   
+- Download the source code   
 - How to build & test locally 
 - How to deploy and test with docker
-- Quickstart: Download & Test & Debug 
-   
+ 
 ## Remarks on the assignment
 - For this task, 
   It focuses on the implementation of REST API, and requests library to invoke URL  
@@ -18,10 +18,16 @@ This is a README for a simplified demo of madlib app
 - Internet connection to public (URLs)
 - Docker
 - curl
-- OPTIONAL but nice to have: virtualenv
+- OPTIONAL but nice to have: virtualenv    
 
-## How to build & test locally
-- Install all needed python libraries
+## Download the source code   
+- Download the source code from https://github.com/iharijono/madlib.git
+```
+% git clone https://github.com/iharijono/madlib.git
+```     
+
+## How to build & unit test & test locally
+- Assuming Python 3.x.x + pip are installed, Install all needed python libraries
 ```
 % pip install flask requests
 
@@ -32,14 +38,18 @@ OR better
 % pip install -r requirements.txt
 
 ```
-- Run the python main program or '-h' to get all the optional arguments
+- To run unit tests:
+```
+python test_api.py
+```
+- To test the app, run the python main program or '-h' to get all the optional arguments
 ```
 % python main.py 
 
 ```
 - Run curl or any other REST API client (postman for example)
 ```
-% python main.py 
+% curl 127.0.0.1:9000/madlib; echo
 
 ```
 OR alternatively
@@ -49,33 +59,38 @@ OR alternatively
 
 ```
 ## How to build, deploy and test with docker
-- Assuming you have docker installed, build the image
+- Assuming you have docker installed, build the image with the tag <user>/modlib where user is your user id (on github for example)
 ```
-% pip install -r requirements.txt
+% docker build -t <user>/madlib .
 
 ```
-
-## Quickstart: Download & Test & Debug   
-- Download the source code from https://github.com/iharijono/madlib.git
+- Verify that the image has been built locally with the tag, for example:
 ```
-% git clone https://github.com/iharijono/madlib.git
-```     
-- Start the app that print the information how to use it:   
-```
-% python main.py -h
-```  
-- Start the app (backend) to accept RESTful API request:   
-```
-% python main.py
-```
-or with more output:
+% docker images
+REPOSITORY         TAG       IMAGE ID       CREATED              SIZE
+iharijono/madlib   latest    46922f1588c9   About a minute ago   91.4MB
 
 ```
-% python main.py -v
+- OPTIONAL and probably not for YOU, tag the image, relogin to prepare to push to dockerhub.com as I did
 ```
-NOTES: Keeping running 'python main.py -v' for the rest of the tests below.
- 
-- Run the REST API client ('curl') against the URL (use 'POST' to create a new invoice, 'GET' to retrieve it back)    
+% docker tag 46922f1588c9 iharijono/modlib
+% docker login (you need to register yourself on dockerhub.com and get uid and password to login)
+% docker push <user>/modlib
+
 ```
-% TBD
+- Assume <user> is iharijono, run the container from the image
+```
+% docker run -p 9000:9000 --name modlib_c iharijono/madlib
+
+```
+- Run curl or any other REST API client (postman for example)
+```
+% curl 127.0.0.1:9000/madlib; echo
+
+```
+OR alternatively
+- Run test_docker_madlib.sh
+```
+% ./test_docker_madlib.sh
+
 ```
