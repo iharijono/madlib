@@ -64,21 +64,21 @@ OR alternatively
 % docker build -t <user>/madlib .
 
 ```
-- Verify that the image has been built locally with the tag, for example:
+- Assuming <user> is iharijono, Verify that the image has been built locally with the tag, for example:
 ```
 % docker images
 REPOSITORY         TAG       IMAGE ID       CREATED              SIZE
 iharijono/madlib   latest    46922f1588c9   About a minute ago   91.4MB
 
 ```
-- OPTIONAL and probably not for YOU, tag the image, relogin to prepare to push to dockerhub.com as I did
+- OPTIONAL and probably this is not for YOU, tag the image, relogin to prepare to push to dockerhub.com as I did
 ```
 % docker tag 46922f1588c9 iharijono/modlib
 % docker login (you need to register yourself on dockerhub.com and get uid and password to login)
 % docker push <user>/modlib
 
 ```
-- Assume <user> is iharijono, run the container from the image
+- Run the container from the image
 ```
 % docker run -p 9000:9000 --name modlib_c iharijono/madlib
 
